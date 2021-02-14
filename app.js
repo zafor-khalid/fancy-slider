@@ -6,7 +6,7 @@ const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
 // selected image 
 let sliders = [];
-
+let count = 0;
 
 // If this key doesn't work
 // Find the name in the url and go to their website
@@ -34,6 +34,8 @@ const getImages = (query) => {
     .then(response => response.json())
     .then(data => showImages(data.hits))
     .catch(err => console.log(err))
+    count = 0;
+    document.getElementById('selected').innerText = `Select image for create slider(${count} selected)`;
 }
 
 let slideIndex = 0;
@@ -46,10 +48,14 @@ const selectItem = (event, img) => {
   
   if (item === -1) {
     sliders.push(img);
+    count++;
   }
   else{
     sliders.splice(item, 1);
+    count--;
   }
+  document.getElementById('selected').innerText = `Select image for create slider(${count} selected)`;
+
 }
 var timer
 const createSlider = () => {
