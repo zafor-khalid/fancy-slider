@@ -43,15 +43,17 @@ const selectItem = (event, img) => {
   element.classList.toggle('hoverEffect');
   
   let item = sliders.indexOf(img);
-  console.log(item);
+  
   if (item === -1) {
     sliders.push(img);
+  }
+  else{
+    sliders.splice(item, 1);
   }
 }
 var timer
 const createSlider = () => {
   const duration = document.getElementById('duration').value || 1000;
-  console.log(duration);
   if(duration > 0){
     // check slider image length
   if (sliders.length < 2) {
